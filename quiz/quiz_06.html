@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>stack - 후위식 계산</title>
+</head>
+
+<body>
+    <script>
+        function solution(str) {
+            let answer = 0;
+            let stk = [];
+            for(let i of str) {
+                if(!isNaN(i)) {
+                    stk.push(parseInt(i));
+                }
+                else {
+                    let rt = stk.pop();
+                    let lt = stk.pop();
+                    let result = 0;
+                    switch(i) {
+                        case '+' : result = lt + rt; break;
+                        case '-' : result = lt - rt; break;
+                        case '*' : result = lt * rt; break;
+                        case '/' : result = lt / rt; break;
+                    }   
+                    stk.push(parseInt(result));
+                }
+                //console.log(stk);
+            }
+            answer = stk.pop();
+            return answer;
+        }
+        let str = "352+*9-"; // 12
+        // str = "35-7*62/+";
+        console.log(solution(str));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<html>
+
+<head>
+    <title>quiz_01 이진수 변환 - 재귀함수(하향식)</title>
+</head>
+
+<body>
+    <script>
+        function solution(num) {
+            let answer = '';
+            function recursion(num) {
+                if (num == 0) {          // 기저조건
+                    return;
+                }
+                else {          // 재귀호출
+                    recursion(parseInt(num / 2));
+                    // console.log(num % 2);
+                    answer += (num % 2);
+                }
+            }
+            recursion(num);
+            return answer;
+        }
+        console.log(solution(13));
+    </script>
+</body>
+
+</html>
