@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <title>큐 - 미림왕국의 공주를 구하라</title>
+</head>
+
+<body>
+    <script>
+        function solution(n, k) {
+            let answer = 0;
+
+            let arr = [];
+            for(let x = 0; x<n; x++) {
+                arr.push(x+1);
+            }
+            while(arr.length) {
+                
+                    for(let i = 0; i<k-1; i++) {
+                        arr.push(arr.shift());
+                    }
+                
+                arr.shift();
+                if(arr.length==1) {
+                    answer = arr.shift();
+                }
+            }
+
+            return answer;
+        }
+        console.log(solution(8, 3));
+    </script>
+</body>
+
+</html>
