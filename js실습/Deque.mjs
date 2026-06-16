@@ -26,7 +26,7 @@ class Deque {
     }
 
     // addLast - tail에 데이터 삽입
-    addLast() {
+    addLast(data) {
         this.list.insertLast(data);
     }
 

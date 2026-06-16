@@ -28,6 +28,7 @@ class DoubleLinkedList {
 
     clear() {
         this.head = null;
+        
         this.count = 0;
     }
 
@@ -38,14 +39,16 @@ class DoubleLinkedList {
         let newNode = new Node(data);
         if (index === 0) {
             newNode.next = this.head;
-            if(this.head !== null) {
+            if (this.head !== null) {
                 this.head.prev = newNode;
             }
             this.head = newNode;
         }
-        else if(index===this.count) {
+        else if (index === this.count) {
             newNode.next = null;
-            newNode.prev = this.tail;
+            if (this.tail !== null) {
+                this.tail.next = newNode;
+            }
             this.tail = newNode;
         }
         else {
@@ -59,7 +62,7 @@ class DoubleLinkedList {
             newNode.next.prev = newNode;
         }
 
-        if(newNode.next === null) {
+        if (newNode.next === null) {
             this.tail = newNode;
         }
         this.count++;
@@ -79,7 +82,7 @@ class DoubleLinkedList {
         if (index === 0) {
             let deleteNode = this.head;
 
-            if(this.head.next == null) {            // 노드가 1개
+            if (this.head.next == null) {            // 노드가 1개
                 this.head = null;
                 this.tail = null;
             }
@@ -90,7 +93,7 @@ class DoubleLinkedList {
             this.count--;
             return deleteNode;
         }
-        else if(index===this.count-1) {
+        else if (index === this.count - 1) {
             let deleteNode = this.tail;
             this.tail.prev.next = null;
             this.tail = this.tail.prev;
@@ -103,7 +106,7 @@ class DoubleLinkedList {
             }
             let deleteNode = currentNode.next;
             currentNode.next = currentNode.next.next;
-            currentNode.nexy.prev = currentNode;
+            currentNode.next.prev = currentNode;
             this.count--;
             return deleteNode;
         }
