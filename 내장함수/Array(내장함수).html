@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Array 내장함수 정리</title>
+</head>
+
+<body>
+    <div id="div1"></div>
+
+    <script>
+        // toString() : 쉼표를 구분자로 해서 문자열로 변환
+        var fruits1 = ["Banana", "Orange", "Apple"];
+        console.log(fruits1.toString());
+
+        // join() - 특정 문자를 구분자로 해서 문자열로 반환 가능
+        console.log(fruits1.join("|"));
+
+        // join() 응용
+        var txt1 = "Banana";
+        txt1 += "Orange";
+        txt1 += "Apple";
+        console.log(txt1);
+
+        document.getElementById("div1").innerHTML = txt1;
+
+        var arr= [];
+        arr.push("Banana");
+        arr.push("Orange");
+        arr.push("Apple");
+
+        console.log(arr);
+        document.getElementById("div1").innerHTML = arr.join("<br>");
+    </script>
+</body>
+
+</html>

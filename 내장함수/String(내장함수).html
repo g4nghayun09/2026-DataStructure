@@ -1,0 +1,127 @@
+<html>
+
+<head>
+    <title>String 내장함수 정리</title>
+</head>
+
+<body>
+    <script>
+        // length : 문자열의 길이를 리턴
+        var txt = "abcdefghijklmnopq";
+        console.log(txt.length); // 17
+
+        // indexOf : 해당 문자열이 시작되는 인덱스 리턴
+        // lastIndexOf : 마지막부터 시작하는 indexOf
+        var str = "Please locate where locate";
+        console.log(str.indexOf("locate")); // 7
+        console.log(str.indexOf("Locate")); // -1
+        console.log(str.lastIndexOf("locate")); // 20
+
+        // 이메일 주소 유효성 체크할 때 사용함.
+        var find = "사용자로부터 입력된 문자열";
+        if (str.indexOf(find) > -1) {
+            console.log(find + "문자 발견");
+        }
+        else {
+            console.log(find + "문자 미발견");
+        }
+
+        // search : 잘 사용하지 않음. 왜냐하면 lastIndexOf같은게 없음.
+        console.log(str.search("locate")); // 7
+
+        // slice(a, b) : a index부터 b-1 index까지의 문자열을 리턴
+        var str = "Apple, Banana, Lemon";
+        console.log(str.slice(7, 13)); // Banana
+        console.log(str.slice(7)); // Banana, Lemon
+        console.log(str.slice(-13, -7)); // Banana
+
+        // substring(a, b) : a index 부터 b-1 index까지의 문자열을 리턴
+        console.log(str.substring(7, 13)); // Banana
+
+        // substr(a, b) : a index 부터 b 갯수의 문자까지
+        console.log(str.substr(7, 6)); // Banana
+
+        var jumin1 = "070828";
+        console.log(`${jumin1.slice(0, 2)}년 ${jumin1.slice(2, 4)}월 ${jumin1.slice(4, 6)}일`); // 07년 08월 28일
+
+        var jumin2 = "2007-08-28";
+        console.log(jumin2.substring(0, jumin2.indexOf("-"))); // 2007
+        var jumin2 = "07-08-28";
+        console.log(jumin2.substring(0, jumin2.indexOf("-"))); // 07
+
+        // replace
+        var str1 = "Please visit here";
+        var str2 = str1.replace("here", "there");
+        console.log(str2); // Please visit there
+
+        var str3 = "Please visit here here here";
+        var str4 = str3.replace("here", "there");
+        console.log(str4); // Please visit there here here
+
+        // 정규 표현식 - 유효성 체크에 유용함
+        var str5 = "Please visit here here here";
+        var str6 = str5.replace(/here/g, "there");
+        console.log(str6);
+
+        var str7 = "Please visit Here HERE HeRe";
+        var str8 = str7.replace(/here/ig, "there");
+        console.log(str8);
+
+        var str9 = "Please visit here HERE HeRe";
+        // toUpperCase  
+        console.log(str9.toUpperCase());
+
+        // toLowerCase
+        console.log(str9.toLowerCase());
+
+        // concat : 문자열 결합
+        var txt1 = "Hello";
+        var txt2 = "World";
+        var txt3 = txt1 + " " + txt2;
+        console.log(txt3);
+
+        console.log(txt1.concat(" " + txt1));
+
+        // trim : 문자열 앞위의 공백을 제거
+        var str10 = "              hello world";
+        console.log(str10);
+        console.log(str10.length);
+        
+        console.log(str10.trim());
+        console.log(str10.trim().length);
+        // padStart : 특정 자릿수를 통일하기 위해서 사용
+        var str11 = "11";
+        var str11 = "1234";
+        console.log(str11.padStart(8, 0));
+
+        var str12 = "7";
+        var str12 = "07";
+        console.log(str12.padStart(2, 0));
+
+        // padEnd
+        var str13 = "15";
+        console.log(str13.padEnd(8, 0));
+
+        // charAt(a) : a index에 해당하는 문자 하나를 리턴
+        var str14 = "Hello World";
+        console.log(str14.charAt(1));
+
+        // split() : 문자열 배열로 변환
+        var tags = "키보드,기계식,지슈라,소니";
+        var arr = tags.split(",");
+        console.log(arr)
+
+        // join() : 배열을 문자열로 반환
+        console.log(arr.join(","));
+        var birthday = "2009_03_20";
+        var arr = birthday.split("-");
+        console.log(arr);
+        
+        console.log(arr.join("."));
+        console.log(arr.join("/"));
+        console.log(arr.join("-"));
+
+    </script>
+</body>
+
+</html>
