@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <title>회의실 배정</title>
+</head>
+
+<body>
+    <script>
+        function solution(meeting) {
+            let answer = 0;
+            let result = [];
+            meeting.sort((a, b) => {
+                return a[1] - b[1];
+            });
+            console.log(meeting);
+            let bool = true;
+            for (let x of meeting) {
+                if (x[1] != meeting[0][1]) {
+                    bool = false;
+                    break;
+                }
+            }
+            if (bool) {
+                meeting.sort((a, b) => {
+                    return a[0] - b[0];
+                });
+                console.log(meeting);
+                let cnt = 0;
+
+                for (let x of meeting) {
+                    cnt++;
+                    if (result.length == 0) result.push(x);
+                    else if (result[result.length - 1][1] <= x[0]) {
+                        result.push(x);
+                    }
+                }
+                console.log(result);
+                answer = result.length;
+
+            }
+            else {
+                let cnt = 0;
+
+                for (let x of meeting) {
+                    cnt++;
+                    if (result.length == 0) result.push(x);
+                    else if (result[result.length - 1][1] <= x[0]) {
+                        result.push(x);
+                    }
+                }
+                console.log(result);
+                answer = result.length;
+            }
+            /*
+            let answer = 0;
+
+            meeting.sort((a,b)=>{
+                if(a[1]==b[1]) return a[0] - b[0];
+                return a[1] - b[1];
+            });
+
+            let et = 0;
+            for(let x of meeting) {
+                if(x[0]>=et) {
+                    answer++;
+                    et = x[1];
+                }
+            }
+            */
+            return answer;
+        }
+        let arr1 = [[1, 4], [2, 3], [3, 2], [4, 6], [5, 7]]; // 3
+        let arr2 = [[3, 3], [1, 3], [2, 3]]; // 2
+        //console.log(solution(arr1));
+        console.log(solution(arr2));
+    </script>
+</body>
+
+</html>

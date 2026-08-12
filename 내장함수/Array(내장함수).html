@@ -103,8 +103,89 @@
 
         console.log(points.reverse());
 
-        // object 정렬
+        // object 정렬 ****
+        var persons = [
+            {name:"유재석", point:78},
+            {name:"카리나", point:99},
+            {name:"윈터", point:100},
+            {name:"이나경", point:80},
+            {name:"백지헌", point:77},
+            {name:"고윤정", point:88}
+        ];
 
+        // persons.sort(function(a, b){
+        //     if(a.point>b.point) {
+        //         return 1;
+        //     }
+        //     else if(a.point<b.point) {
+        //         return -1;
+        //     }
+        //     else {
+        //         return 0;
+        //     }
+        // });
+
+        // 삼항 연산자
+        persons.sort(function(a, b) {
+            return (a.point>b.point) ? 1 : (a.point<b.point) ? -1 : 0;
+        });
+
+        console.log(persons); 
+
+        // ***** filter() : 조건에 맞는 배열만 리턴
+        var persons = [
+            {name:"유재석", point:78, city:"서울"},
+            {name:"카리나", point:99, city:"대구"},
+            {name:"윈터", point:100, city:"부산"},
+            {name:"이나경", point:80, city:"인천"},
+            {name:"백지헌", point:77, city:"제주"},
+            {name:"고윤정", point:88, city:"광주"}
+        ];
+
+        // var busan = [];
+        // for(let i=0; i<persons.length; i++) {
+        //     if(persons[i].city == "부산") {
+        //         busan.push(persons[i]);
+        //     }
+        // }
+        // console.log(busan);
+        var busan = persons.filter(function(obj){
+            return obj.city == "부산";
+        });
+        console.log(busan);
+
+        // **** reduce() : 
+        var arr = [1, 2, 3, 4, 5];
+        var sum = 0;
+        // for(let i=0; i<arr.length; i++) {
+        //     sum += arr[i]
+        // }   
+
+        // for(var a of arr) {
+        //     sum += a;
+        // }
+
+        // reduce(a, b)
+        // a : accumulator = 누산기
+        // c : currentValue = 현재값
+        var arr = [1, 2, 3, 4, 5, 6, 7];
+        var sum = arr.reduce(function(a, c) {
+            return a + c;
+        });
+        console.log(sum);
+
+        // ***** map() - reduce(), filter()와 다른 형태로 새로운 배열을 생성
+        var userList = [
+            {firstName:"지민", lastName:"유", email:"yu@gmail.com"},
+            {firstName:"민정", lastName:"김", email:"winter@gmail.com"},
+            {firstName:"윤정", lastName:"고", email:"go@gmail.com"},
+            {firstName:"지헌", lastName:"백", email:"back@gmail.com"},
+            {firstName:"나경", lastName:"이", email:"lee@gmail.com"}
+        ];
+        var userList2 = userList.map(function(obj) {
+            return {fullName:obj.lastName+obj.firstName, firstName: obj.firstName, lastName: obj.lastName, email:obj.email};
+        })
+        console.log(userList2);
 
     </script>
 </body>
