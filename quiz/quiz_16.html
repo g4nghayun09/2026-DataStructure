@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>수학경시대회 - 이진 트리</title>
+</head>
+
+<body>
+    <script>
+        function solution(lim, arr) {
+            let answer = 0;
+            let time = 0;
+            let timeArr = [];
+
+            function DFS(num) {
+                if (num==arr.length) {
+                    timeArr.push(time);
+                    time = 0;
+                    return;
+                }
+                else {
+                    time += arr[num-1][1];
+                    DFS(arr[num-1]);
+                    DFS(arr[num-1]);
+                }
+            }
+            DFS(1);
+
+            return answer;
+        }
+        let arr = [20, [10, 5], [25, 12], [15, 8], [6, 3], [7, 4]];
+        console.log(solution(20, arr));
+    </script>
+</body>
+
+</html>

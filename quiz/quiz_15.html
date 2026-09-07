@@ -1,0 +1,50 @@
+<html>
+
+<head>
+    <title>이진 트리의 - 바둑이 승차</title>
+</head>
+
+<body>
+    <script>
+        function solution(c, arr) {
+            let answer = Number.MIN_SAFE_INTEGER;
+            let n = arr.length;
+            let ch = Array.from({length:(n+1)}, ()=>0);
+            let max = [];
+            let cnt = 0;
+
+            function DFS(num) {
+                if (num === n+1) {// 기저 조건
+                    let sum = 0;
+                    for(let i=0; i<n; i++) {
+                        if(ch[i]===0) sum += arr[i];
+                    }
+                    max[cnt] = sum;
+                    cnt++;
+                    // console.log(sum)
+                }
+                else {
+                    ch[num] = 1;
+                    DFS(num+1);
+                    ch[num]=0;
+                    DFS(num+1);
+                }
+            }
+
+            DFS(1);
+
+            for(let i=0; i<max.length; i++) {
+                if(c>=max[i]) {
+                    if(answer<max[i])
+                        answer = max[i];
+                }
+            }
+
+            return answer;
+        }
+        let arr = [81, 58, 42, 33, 61];
+        console.log(solution(259, arr)); 
+    </script>
+</body>
+
+</html>

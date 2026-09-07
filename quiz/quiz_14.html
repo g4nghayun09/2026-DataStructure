@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>이진 트리의 운행 방법 - 부분 집합 구하기</title>
+</head>
+
+<body>
+    <script>
+        function solution(n) {
+            let answer = "";
+            let ch = [0,0,0,0];
+
+            function DFS(num) {
+                if (num === n+1) {// 기저 조건
+                    let temp = "";
+                    for(let i=1; i<4; i++) {
+                        if(ch[i]===1) temp += i;
+                    }
+                    console.log(temp)
+                }
+                else {
+                    ch[num] = 1;
+                    DFS(num+1);
+                    ch[num]=0
+                    DFS(num+1);
+                }
+            }
+
+            DFS(1);
+            return answer;
+        }
+        console.log(solution(3)); 
+    </script>
+</body>
+
+</html>

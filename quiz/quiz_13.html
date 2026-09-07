@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <title>트리</title>
+</head>
+
+<body>
+    <script>
+        function solution(v) {
+            let answer = "";
+            
+
+            function Traversal(v) {
+                if(v>7) return;
+
+                let l = v*2;
+                let r = (v*2)+1;
+
+                // preorder
+                
+                answer += v;
+                Traversal(l);
+                Traversal(r);
+                
+
+                // inorder
+                answer += v;
+                Traversal(l);
+                Traversal(r);
+
+                // postorder
+           
+
+
+            } // Traversal
+            Traversal(1);
+
+            return answer;
+        }
+
+        console.log(solution(1));
+    </script>
+</body>
+
+</html>
