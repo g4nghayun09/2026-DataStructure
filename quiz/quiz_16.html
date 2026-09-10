@@ -8,26 +8,51 @@
     <script>
         function solution(lim, arr) {
             let answer = 0;
-            let time = 0;
+            let n = arr.length;
+            let ch = Array.from({ length: (n + 1) }, () => 0);
+            let max = [];
+            let time = Array.from({ length: (n + 1) }, () => 0);
             let timeArr = [];
+            let cnt = 0;
 
             function DFS(num) {
-                if (num==arr.length) {
-                    timeArr.push(time);
-                    time = 0;
-                    return;
+                if (num === n + 1) {// 기저 조건
+                    let sum = 0;
+                    let a = 0;
+                    for (let i = 0; i < n; i++) {
+                        if (ch[i] === 0) sum += arr[i][0];
+                        if (time[i] === 0) a += arr[i][1];
+                    }
+                    // ch[cnt] = sum;
+                    max.push(sum);
+                    // time[cnt] = a;
+                    timeArr.push(a);
+                    cnt++;
+
+                    // console.log(sum)
                 }
                 else {
-                    time += arr[num-1][1];
-                    DFS(arr[num-1]);
-                    DFS(arr[num-1]);
+                    ch[num] = 1;
+                    time[num] = 1;
+                    DFS(num + 1);
+
+                    ch[num] = 0;
+                    time[num] = 0;
+                    DFS(num + 1);
                 }
             }
+
             DFS(1);
+
+            for (let i = 0; i < timeArr.length; i++) {
+                if (lim >= timeArr[i])
+                    if (answer < max[i])
+                        answer = max[i];
+            }
 
             return answer;
         }
-        let arr = [20, [10, 5], [25, 12], [15, 8], [6, 3], [7, 4]];
+        let arr = [[10, 5], [25, 12], [15, 8], [6, 3], [7, 4]];
         console.log(solution(20, arr));
     </script>
 </body>
