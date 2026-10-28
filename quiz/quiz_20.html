@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>넓이우선탐색 - BFS</title>
+</head>
+
+<body>
+    <script>
+        function solution(n) {
+            let answer = "";
+            let queue = [];
+            let cnt = 1;
+            for (let i = 0; i < n; i++) {
+                let p = cnt;
+                let l = cnt + cnt;
+                let r = cnt + cnt + 1;
+                queue.push(r);
+                queue.push(l);
+                queue.push(p);
+                answer += queue.pop();
+                cnt++;
+            }
+            return answer;
+        }
+        console.log(solution(7));
+    </script>
+</body>
+
+</html>
